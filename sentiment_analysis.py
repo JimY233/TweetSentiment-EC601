@@ -1,50 +1,29 @@
-"""Demonstrates how to make a simple call to the Natural Language API."""
-
-import argparse
-
+# Imports the Google Cloud client library
 from google.cloud import language
 from google.cloud.language import enums
 from google.cloud.language import types
+import json
 
+# Instantiates a client
+client = language.LanguageServiceClient()
 
-def print_result(annotations):
-    score = annotations.document_sentiment.score
-    magnitude = annotations.document_sentiment.magnitude
-
-    for index, sentence in enumerate(annotations.sentences):
-        sentence_sentiment = sentence.sentiment.score
-        print('Sentence {} has a sentiment score of {}'.format(
-            index, sentence_sentiment))
-
-    print('Overall Sentiment: score of {} with magnitude of {}'.format(
-        score, magnitude))
-    return 0
-
-
-def analyze(movie_review_filename):
-    """Run a sentiment analysis request on text within a passed filename."""
-    client = language.LanguageServiceClient()
-
-    with open(movie_review_filename, 'r') as review_file:
-        # Instantiates a plain text document.
-        content = review_file.read()
-
+#Import Tweets result file.
+with open("Hashtag_Tweets.json", "r+", encoding='utf-8') as f:
+    data = json.loads(f.read()) 
+Sentiment_output = open("tweets_sentiment.txt","w", encoding='utf-8')
+#Analyze each tweet text
+generalScore = 0.0
+for tweet in data:
+    text = tweet['text']
     document = types.Document(
-        content=content,
+        content=text,
         type=enums.Document.Type.PLAIN_TEXT)
-    annotations = client.analyze_sentiment(document=document)
+    #Call API to analyze text.
+    sentiment = client.analyze_sentiment(document=document).document_sentiment
+    #Write result to file
+    generalScore += sentiment.score
+    Sentiment_output.write("Text:" + text +"\n")
+    Sentiment_output.write("Sentiment: {}, {}".format(sentiment.score, sentiment.magnitude)+"\n\n")
 
-    # Print the results
-    print_result(annotations)
+print("The general sentiment score of Trump over last 20 tweets is: " + generalScore)
 
-
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(
-        description=__doc__,
-        formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument(
-        'movie_review_filename',
-        help='The filename of the movie review you\'d like to analyze.')
-    args = parser.parse_args()
-
-    analyze(args.movie_review_filename)
