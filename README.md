@@ -1,4 +1,4 @@
-# TweetSentiment Python Package - EC601 - TrumpCard
+# Tweet Sentiment Project 2 - EC601 - TrumpCard
 Project 2 using Tweepy and Google Cloud SDK - NLP. Includes example use case of Trump Sentiment Analysis.
 
 TrumpCard is the culmination of these two packages. It is a product which will allow a user to gauge the general sentiment on Trump's twitter reactions.
