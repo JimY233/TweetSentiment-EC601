@@ -23,6 +23,9 @@ An example use case for the combination of these two products is a twitter senti
 
 ## Sources
 http://docs.tweepy.org/en/v3.5.0/api.html
+
 https://cloud.google.com/natural-language/docs/sentiment-tutorial
+
 https://cloud.google.com/natural-language/docs/setup
+
 
