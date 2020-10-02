@@ -1,65 +1,35 @@
-#!/usr/bin/env python
-# encoding: utf-8
-#Author - Prateek Mehta
+import tweepy
+import sys
+import json #To write file as json format
 
+consumer_key = ""
+consumer_secret = ""
+access_key = ""
+access_secret = ""
 
-import tweepy #https://github.com/tweepy/tweepy
-import json
-
-
-#Twitter API credentials
-consumer_key = "a"
-consumer_secret = "b"
-access_key = "c"
-access_secret = "d"
-#bearer token = "AAAAAAAAAAAAAAAAAAAAAGlHIAEAAAAAHo%2BgSv4X1QtZL3YrYi2K1S7h9jE%3DC37KZwuX0ocBVUgDrz4xoSxYshgaycKqgJGTkawOUIa2Ew17oo"
-
-def get_all_tweets(screen_name):
-    
-    #Twitter only allows access to a users most recent 3240 tweets with this method
-    
-    #authorize twitter, initialize tweepy
+def Authorization_Setup():
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_key, access_secret)
     api = tweepy.API(auth)
-    
-    #initialize a list to hold all the tweepy Tweets
-    alltweets = []    
-    
-    #make initial request for most recent tweets (200 is the maximum allowed count)
-    new_tweets = api.user_timeline(screen_name = screen_name,count=10)
-    
-    #save most recent tweets
-    alltweets.extend(new_tweets)
-    
-    #save the id of the oldest tweet less one
-    oldest = alltweets[-1].id - 1
-    
-    #keep grabbing tweets until there are no tweets left to grab
-    while len(new_tweets) > 0:
-        
-        #all subsiquent requests use the max_id param to prevent duplicates
-        new_tweets = api.user_timeline(screen_name = screen_name,count=10,max_id=oldest)
-        
-        #save most recent tweets
-        alltweets.extend(new_tweets)
-        
-        #update the id of the oldest tweet less one
-        oldest = alltweets[-1].id - 1
-        if(len(alltweets) > 15):
-            break
-        print ("... %s tweets downloaded so far" % (len(alltweets)))
-       
-    #write tweet objects to JSON
-    file = open('tweet.json', 'w') 
-    print("Writing tweet objects to JSON please wait...")
-    for status in alltweets:
-        json.dump(status._json,file,sort_keys = True,indent = 4)
-    
-    #close the file
-    print ("Done")
-    file.close()
+    return api
 
-if __name__ == '__main__':
-    #pass in the username of the account you want to download
-    get_all_tweets("@Ibra_official")
+#Write tweets information to file as json format.
+def Write_tweets_to_File(Input_list,target_filename):
+    data = []
+    filename = "%s.json" % target_filename
+    Tweets_text = open(filename, 'w') 
+    for status in Input_list:
+        # json.dump(status._json,Tweets_text,indent = 4)
+        data.append(status._json)
+    json.dump(data,Tweets_text)
+    Tweets_text.close
+
+#Search tweets based on Hashtag and time.
+def GET_Hashtag_Search_Tweets(Local_API,Hashtag,Count_Number,Time_before):
+    Hashtag_Tweets = tweepy.Cursor(Local_API.search,q=Hashtag,count=Count_Number,since=Time_before)
+    Write_tweets_to_File(Hashtag_Tweets.items(),'Hashtag_Tweets')
+
+if __name__ == "__main__":
+    API = Authorization_Setup()
+    API.wait_on_rate_limit=True
+    GET_Hashtag_Search_Tweets(API,"#trump",5,"2020-9-28")
