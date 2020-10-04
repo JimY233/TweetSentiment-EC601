@@ -25,5 +25,5 @@ for tweet in data:
     Sentiment_output.write("Text:" + text +"\n")
     Sentiment_output.write("Sentiment: {}, {}".format(sentiment.score, sentiment.magnitude)+"\n\n")
 
-print("The general sentiment score of Trump over last 20 tweets is: " + generalScore)
+print("The general sentiment score of Trump over last 20 tweets is: " + str(generalScore))
 
