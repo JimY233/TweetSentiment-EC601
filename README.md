@@ -25,6 +25,8 @@ In order to test this functionality, first you must download your local Google A
 ## TrumpCard
 An example use case for the combination of these two products is a twitter sentiment analysis of Trump. First, we query twitter for the most recent tweets with the hashtag "#trump". Then, we run our sentiment analysis to get a live sentiment score of trump. We output our NLP analysis of each individual tweet and aggregate it in order to get a general understanding of the recent opinions of trump. 
 
+![Example Output](Example Outputs/a.PNG)
+
 ## Sources
 http://docs.tweepy.org/en/v3.5.0/api.html
 
