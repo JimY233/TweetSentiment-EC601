@@ -32,4 +32,5 @@ def GET_Hashtag_Search_Tweets(Local_API,Hashtag,Count_Number,Time_before):
 if __name__ == "__main__":
     API = Authorization_Setup()
     API.wait_on_rate_limit=True
-    GET_Hashtag_Search_Tweets(API,"#trump",5,"2020-9-28")
+    # the hashtag has been switched to '#BU' in order to avoid twitter API error 429 
+    GET_Hashtag_Search_Tweets(API,"#Boston University",5,"2020-9-28")
