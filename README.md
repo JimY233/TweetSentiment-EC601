@@ -3,6 +3,8 @@ Project 2 using Tweepy and Google Cloud SDK - NLP. Includes example use case of 
 
 TrumpCard is the culmination of these two packages. It is a product which will allow a user to gauge the general sentiment on Trump's twitter reactions.
 
+** NOTE : The Tweepy API cannot handle querying tweets with "#trump" too well, Twitter rejects the call with error 429 : Too many requests. This example has been hardcoded to just query for "#BU" instead.**
+
 ## Overview
 This project combines the usage of the tweepy, a python package made to handle the twitter API, and Google Cloud NLP (Natural Language Processing) API. The combination of these two tools allows one to query twitter for tweets and analyze the sentiment of them.  
 
@@ -11,7 +13,7 @@ This is signicant as it allows companies to gauge the response to their products
 ## Tweepy
 First, we pass tweepy our twitter account credentials in order to be authenticated and we use tweepy to retrieve live tweets. In order to test this functionality, run the script "tweetAPIexample.py". We limit the number of tweets used in order to not get the API Error code 429.
 
-Error 429 is due to too many queries in the last 15 minutes. This is an error that I dealt with many times testing out functionality.
+As stated in the note at the top, Error 429 is due to too many queries in the last 15 minutes. This is an error that I dealt with many times testing out functionality.
 
 In the given example files, the credentials are set to be empty at the beginning of the file so that other users can test functionality with their own credentials. 
 
