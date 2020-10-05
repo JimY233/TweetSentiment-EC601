@@ -23,7 +23,7 @@ for tweet in data:
     #Write result to file
     generalScore += sentiment.score
     Sentiment_output.write("Text:" + text +"\n")
-    Sentiment_output.write("Sentiment: {}, {}".format(sentiment.score, sentiment.magnitude)+"\n\n")
+    Sentiment_output.write("Sentiment score (score, magnitude): {}, {}".format(sentiment.score, sentiment.magnitude)+"\n\n")
 
 print("The general sentiment score of Trump over last 20 tweets is: " + str(generalScore))
 
