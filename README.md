@@ -1,16 +1,42 @@
 # Tweet Sentiment Project 2 AND Project 4 - EC601 - TrumpCard
 Project 2 using Tweepy and Google Cloud SDK - NLP. Includes example use case of Trump Sentiment Analysis.
-
+Project 4 using Pytest to conduct Unit Tests
 TrumpCard is the culmination of these two packages. It is a product which will allow a user to gauge the general sentiment on Trump's twitter reactions.
 
-** NOTE : The Tweepy API cannot handle querying tweets with "#trump" too well, Twitter rejects the call with error 429 : Too many requests. This example has been hardcoded to just query for "#BU" instead.**
 
-Project 4 Update! Testing has been added
+## Updates + News
+### Pinned Note : 
+The Tweepy API cannot handle querying tweets with "#trump" too well, Twitter rejects the call with error 429 : Too many requests. This example has been hardcoded to just query for "#BU" instead.**
+
+### Project 4 Update! Testing has been added using python's popular testing package, Pytest. 
+Testing features have been added! In order to run these new additions, take a look at the walkthrough in the Project 4 Overview Section.
+
+## Overview - Project 4
+This project demonstrates the testing features and utility that Pytest has to offer. The tests we do can be organized into the following catagories:
+
+#### Standard Query
+
+#### 
+
+#### Error Checking
+In addition to the testing modules added, I have also added some initial error checking as there was none implemented initially from Project 2 phase. Some of the error checking includes: 
+
+1. Checking User Input to make sure user is passing correct types of input (i.e checking if num_of_tweets is an int, etc).
+
+2. Sanity Checking query size to make sure API does not pass back any errors
+
+3. 
+
+####
 
 ## Overview - Project 2
 This project combines the usage of the tweepy, a python package made to handle the twitter API, and Google Cloud NLP (Natural Language Processing) API. The combination of these two tools allows one to query twitter for tweets and analyze the sentiment of them.  
 
 This is signicant as it allows companies to gauge the response to their products via social media. 
+
+In order to run this program, first copy this repository over onto your local machine. 
+
+
 
 ## Tweepy
 First, we pass tweepy our twitter account credentials in order to be authenticated and we use tweepy to retrieve live tweets. In order to test this functionality, run the script "tweetAPIexample.py". We limit the number of tweets used in order to not get the API Error code 429.
