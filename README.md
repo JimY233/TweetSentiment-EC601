@@ -12,11 +12,19 @@ The Tweepy API cannot handle querying tweets with "#trump" too well, Twitter rej
 Testing features have been added! In order to run these new additions, take a look at the walkthrough in the Project 4 Overview Section.
 
 ## Overview - Project 4
+In order to invoke unit testing, just run the following command after typing in your personal api keys.
+
+'''
+pytest testing.py
+'''
+
 This project demonstrates the testing features and utility that Pytest has to offer. The tests we do can be organized into the following catagories:
 
 #### Standard Query
+Standard query such as the one used in example in tweetAPIexample.py
 
-#### 
+#### Empty Query
+Query from the twitter API will return an empty query when user input is mis-spelled or any other such common user errors. By testing this before the data gets to the NLP module, we can detect where errors happen more accurately.
 
 #### Error Checking
 In addition to the testing modules added, I have also added some initial error checking as there was none implemented initially from Project 2 phase. Some of the error checking includes: 
