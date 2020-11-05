@@ -37,8 +37,20 @@ This project combines the usage of the tweepy, a python package made to handle t
 This is signicant as it allows companies to gauge the response to their products via social media. 
 
 In order to run this program, first copy this repository over onto your local machine. 
+Afterwards, get into the directory you clone the repo to and run the following commands
 
+```
+python tweetAPIexample.py
+```
 
+This script utilizes the tweepy API and loads the results of a query into a JSON File (Hashtag_Tweets.json)
+Once this has been done, run this next command:
+
+```
+python sentiment_analysis.py
+```
+
+This will read the local json file created and then use the GCP NLP API to do a sentiment analysis and return a float with the score.
 
 ### Tweepy
 First, we pass tweepy our twitter account credentials in order to be authenticated and we use tweepy to retrieve live tweets. In order to test this functionality, run the script "tweetAPIexample.py". We limit the number of tweets used in order to not get the API Error code 429.
