@@ -3,10 +3,10 @@ import sys
 import json #To write file as json format
 import pytest
 
-consumer_key = "Lqv60lM2PAJkyU2EbBjd7n8v2"
-consumer_secret = "UcTxoUtb8MLBgrYZOnDtNsLaxpvx4Oeoi5RuOdUlKxqbLT2tjL"
-access_key = "757364047700369411-u8EnGZ1O6fpHjsbkPqQ31uSN7lQ1YJC"
-access_secret = "YlIin5aA75gXZUqbwXHOlj7I3jTHrrJRLpht76pDxKw7k"
+consumer_key = ""
+consumer_secret = ""
+access_key = ""
+access_secret = ""
 
 
 def Authorization_Setup():
