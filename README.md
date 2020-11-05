@@ -23,9 +23,6 @@ In addition to the testing modules added, I have also added some initial error c
 
 1. Checking User Input to make sure user is passing correct types of input (i.e checking if num_of_tweets is an int, etc).
 
-2. Sanity Checking query size to make sure API does not pass back any errors
-
-3. 
 
 ####
 
